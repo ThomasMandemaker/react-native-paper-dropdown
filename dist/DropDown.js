@@ -5,6 +5,11 @@ const DropDown = forwardRef((props, ref) => {
     const activeTheme = useTheme();
     const { multiSelect = false, visible, onDismiss, showDropDown, value, setValue, activeColor, mode, label, placeholder, inputProps, list, dropDownContainerMaxHeight, dropDownContainerHeight, theme, dropDownStyle, dropDownItemStyle, dropDownItemSelectedStyle, dropDownItemTextStyle, dropDownItemSelectedTextStyle, accessibilityLabel, } = props;
     const [displayValue, setDisplayValue] = useState("");
+    useEffect(() => {
+        if (value == null) {
+            setDisplayValue('');
+        }
+    }, [value, setDisplayValue]);
     const [inputLayout, setInputLayout] = useState({
         height: 0,
         width: 0,
